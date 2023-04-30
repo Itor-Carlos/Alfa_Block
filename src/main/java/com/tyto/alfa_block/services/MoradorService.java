@@ -1,5 +1,6 @@
 package com.tyto.alfa_block.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class MoradorService {
          throw new MoradorNotFoundException();
       }
       else return morador.get();
+   }
+
+   public List<Morador> listarMoradores(){
+      return this.moradorRepository.findAll();
    }
 
 }
