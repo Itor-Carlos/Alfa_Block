@@ -28,4 +28,8 @@ public class MoradorService {
       return this.moradorRepository.findAll();
    }
 
+   public Morador salvarMorador(Morador morador){
+      return this.moradorRepository.save(morador);
+   }
+
 }
