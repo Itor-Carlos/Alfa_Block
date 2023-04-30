@@ -2,7 +2,7 @@ package com.tyto.alfa_block.exceptions;
 
 import java.time.LocalDateTime;
 
-public class ExceptionDetails extends RuntimeException{
+public class ExceptionDetails{
    
    private int httpStatus;
    private String timeStamp;

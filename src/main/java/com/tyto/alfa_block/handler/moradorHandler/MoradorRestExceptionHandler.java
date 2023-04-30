@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.tyto.alfa_block.exceptions.moradorExceptions.MoradorNotFoundException;
+import com.tyto.alfa_block.exceptions.moradorExceptions.MoradorNotFoundExceptionDetails;
 
-@RestControllerAdvice(basePackages = "com.tyto.alfa_block.controllersjava")
+@RestControllerAdvice(basePackages = "com.tyto.alfa_block.controllers")
 public class MoradorRestExceptionHandler {
    
    public String formattedDate(LocalDateTime localDateTime){
@@ -20,13 +21,13 @@ public class MoradorRestExceptionHandler {
    }
 
    @ExceptionHandler(MoradorNotFoundException.class)
-   public ResponseEntity<MoradorNotFoundException> moradorNotFound(MoradorNotFoundException moradorNotFoundException){
+   public ResponseEntity<MoradorNotFoundExceptionDetails> moradorNotFound(MoradorNotFoundException moradorNotFoundException){
 
-      MoradorNotFoundException moradorNotFoundExceptionResponse = new MoradorNotFoundException(HttpStatus.NOT_FOUND.value(), formattedDate(LocalDateTime.now()), "Morador Not Found", "Morador não encontrado com o cpf registrado.");
+      MoradorNotFoundExceptionDetails moradorNotFoundExceptionResponse = new MoradorNotFoundExceptionDetails(HttpStatus.NOT_FOUND.value(), formattedDate(LocalDateTime.now()), "Morador Not Found", "Morador não encontrado com o cpf registrado.");
 
-      System.out.println(formattedDate(LocalDateTime.now()));
+      System.out.println("rodou");
 
-      return new ResponseEntity<>(moradorNotFoundExceptionResponse, HttpStatus.NOT_FOUND);
+      return new ResponseEntity<MoradorNotFoundExceptionDetails>(moradorNotFoundExceptionResponse, HttpStatus.NOT_FOUND);
 
    }
 
