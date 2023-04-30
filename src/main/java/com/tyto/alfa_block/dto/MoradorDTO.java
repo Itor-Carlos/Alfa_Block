@@ -2,7 +2,10 @@ package com.tyto.alfa_block.dto;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.tyto.alfa_block.model.Morador;
+
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class MoradorDTO {
    
@@ -14,7 +17,7 @@ public class MoradorDTO {
    @Length(min = 3,max = 50, message = "O campo name do morador deve conter um mínimo de 3 e máximo de 5 caracteres")
    private String name;
 
-   @NotBlank(message = "O campo numeroApartamento do morador não pode ser nulo ou vazio.")
+   @NotNull(message = "O campo numeroApartamento do morador não pode ser nulo ou vazio.")
    private Integer numeroApartamento;
 
    @NotBlank(message = "O campo email do morador não pode ser nulo ou vazio.")
@@ -76,5 +79,8 @@ public class MoradorDTO {
       this.telefone = telefone;
    }
 
+   public Morador toMorador(){
+      return new Morador(cpf, name, email, numeroApartamento, telefone);
+   }
    
 }
