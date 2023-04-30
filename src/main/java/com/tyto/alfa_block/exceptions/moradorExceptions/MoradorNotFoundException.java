@@ -6,17 +6,11 @@ import com.tyto.alfa_block.exceptions.ExceptionDetails;
 
 import java.time.LocalDateTime;
 
-import org.springframework.http.HttpStatus;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-public class MoradorNotFoundException extends ExceptionDetails{
-   
+
+
+public class MoradorNotFoundException extends RuntimeException{
    public MoradorNotFoundException(){
-      super();
+      
    }
-
-   public MoradorNotFoundException(int httpStatus, String timeStamp, String exception, String message){
-      super(httpStatus,timeStamp,exception,message);
-   }
-
 }
